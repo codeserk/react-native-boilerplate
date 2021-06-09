@@ -1,115 +1,42 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
+import i18n from 'i18next'
+import React from 'react'
+import { initReactI18next } from 'react-i18next'
+import { StatusBar } from 'react-native'
+import FlashMessage from 'react-native-flash-message'
 
- import React from 'react';
- import {
-   SafeAreaView,
-   ScrollView,
-   StatusBar,
-   StyleSheet,
-   Text,
-   useColorScheme,
-   View,
- } from 'react-native';
+import { resources } from './src/locale/config'
+import { Navigator } from './src/Navigator'
+import { AuthStoreContext, useAuthStore } from './src/store/auth.store'
+import { PreferencesStoreContext, usePreferencesStore } from './src/store/preferences.store'
+import { setDefaultFont } from './src/util/font'
+import { setupMoment } from './src/util/moment'
+import { Compose } from './src/util/store'
 
- import {
-   Colors,
-   DebugInstructions,
-   Header,
-   LearnMoreLinks,
-   ReloadInstructions,
- } from 'react-native/Libraries/NewAppScreen';
+i18n.use(initReactI18next).init({
+  lng: 'fr',
+  resources,
+})
 
- const Section: React.FC<{
-   title: string;
- }> = ({children, title}) => {
-   const isDarkMode = useColorScheme() === 'dark';
-   return (
-     <View style={styles.sectionContainer}>
-       <Text
-         style={[
-           styles.sectionTitle,
-           {
-             color: isDarkMode ? Colors.white : Colors.black,
-           },
-         ]}>
-         {title}
-       </Text>
-       <Text
-         style={[
-           styles.sectionDescription,
-           {
-             color: isDarkMode ? Colors.light : Colors.dark,
-           },
-         ]}>
-         {children}
-       </Text>
-     </View>
-   );
- };
+setDefaultFont()
+setupMoment()
 
- const App = () => {
-   const isDarkMode = useColorScheme() === 'dark';
+const App = () => {
+  const preferences = usePreferencesStore()
+  const auth = useAuthStore(preferences)
 
-   const backgroundStyle = {
-     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-   };
+  return (
+    <Compose
+      components={[
+        [PreferencesStoreContext.Provider, { value: preferences }],
+        [AuthStoreContext.Provider, { value: auth }],
+      ]}>
+      <StatusBar translucent backgroundColor="transparent" barStyle="dark-content" />
 
-   return (
-     <SafeAreaView style={backgroundStyle}>
-       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-       <ScrollView
-         contentInsetAdjustmentBehavior="automatic"
-         style={backgroundStyle}>
-         <Header />
-         <View
-           style={{
-             backgroundColor: isDarkMode ? Colors.black : Colors.white,
-           }}>
-           <Section title="Step One">
-             Edit <Text style={styles.highlight}>App.js</Text> to change this
-             screen and then come back to see your edits.
-           </Section>
-           <Section title="See Your Changes">
-             <ReloadInstructions />
-           </Section>
-           <Section title="Debug">
-             <DebugInstructions />
-           </Section>
-           <Section title="Learn More">
-             Read the docs to discover what to do next:
-           </Section>
-           <LearnMoreLinks />
-         </View>
-       </ScrollView>
-     </SafeAreaView>
-   );
- };
+      <Navigator />
 
- const styles = StyleSheet.create({
-   sectionContainer: {
-     marginTop: 32,
-     paddingHorizontal: 24,
-   },
-   sectionTitle: {
-     fontSize: 24,
-     fontWeight: '600',
-   },
-   sectionDescription: {
-     marginTop: 8,
-     fontSize: 18,
-     fontWeight: '400',
-   },
-   highlight: {
-     fontWeight: '700',
-   },
- });
+      <FlashMessage position="top" />
+    </Compose>
+  )
+}
 
- export default App;
+export default App

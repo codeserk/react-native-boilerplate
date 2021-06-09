@@ -1,10 +1,9 @@
 {
-  "name": "react-native-template-typescript",
+  "name": "@codeserk/react-native-boilerplate",
   "version": "0.0.1",
   "description": "Clean and minimalist React Native template for a quick start with TypeScript.",
   "scripts": {
-    "test": "exit 0",
-    "prepublishOnly": "npm --no-git-tag-version version $TRAVIS_TAG"
+    "test": "exit 0"
   },
   "files": [
     "template",
@@ -12,7 +11,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/emin93/react-native-template-typescript.git"
+    "url": "git+https://github.com/codeserk/react-native-boilerplate"
   },
   "keywords": [
     "react-native",
@@ -21,10 +20,9 @@
     "template",
     "boilerplate"
   ],
-  "author": "Emin Khateeb <emin@emin.ch>",
-  "license": "MIT",
+  "author": "Jose Camara <josec89@gmail.com>",
   "bugs": {
-    "url": "https://github.com/emin93/react-native-template-typescript/issues"
+    "url": "https://github.com/codeserk/react-native-boilerplate/issues"
   },
-  "homepage": "https://github.com/emin93/react-native-template-typescript#readme"
+  "homepage": "https://github.com/codeserk/react-native-boilerplate"
 }
