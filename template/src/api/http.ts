@@ -19,15 +19,13 @@ export function configureJWT(jwt: string) {
     baseURL: config.api.baseUrl,
   })
 
-  http.interceptors.request.use(
-    (axiosConfig: AxiosRequestConfig): AxiosRequestConfig => {
-      if (!axiosConfig.headers) {
-        axiosConfig.headers = {}
-      }
+  http.interceptors.request.use((axiosConfig: AxiosRequestConfig): AxiosRequestConfig => {
+    if (!axiosConfig.headers) {
+      axiosConfig.headers = {}
+    }
 
-      axiosConfig.headers[JWT_HEADER] = `Bearer ${jwt}`
+    axiosConfig.headers[JWT_HEADER] = `Bearer ${jwt}`
 
-      return axiosConfig
-    },
-  )
+    return axiosConfig
+  })
 }

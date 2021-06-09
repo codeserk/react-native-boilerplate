@@ -1,4 +1,4 @@
-import { createContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 
 import { authAPI } from '../api/auth'
 import { configureJWT } from '../api/http'
