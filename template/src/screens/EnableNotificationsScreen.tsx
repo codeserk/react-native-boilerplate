@@ -6,12 +6,11 @@ import { ScrollView } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { SvgXml } from 'react-native-svg'
 
-import NotificationsImage from '../../../assets/img/notifications.svg'
-import { Button, ButtonType } from '../../components/Button'
-import { Fonts } from '../../constants'
-import { AuthStoreContext } from '../../store/auth.store'
-import { PreferencesStoreContext } from '../../store/preferences.store'
-import { deviceWidth } from '../../util/dimensions'
+import NotificationsImage from '../../assets/img/notifications.svg'
+import { Fonts } from '../constants'
+import { AuthStoreContext } from '../store/auth.store'
+import { PreferencesStoreContext } from '../store/preferences.store'
+import { deviceWidth } from '../util/dimensions'
 
 /**
  * Enable notifications screen
@@ -36,22 +35,7 @@ export function EnableNotificationsScreen() {
 
         <SvgXml xml={NotificationsImage} width={deviceWidth} style={styles.image} />
 
-        <View style={styles.body}>
-          <Button
-            onPress={() => navigate('Profile')}
-            label={t('notifications.enable')}
-            isLoading={isLoading}
-            disabled={isLoading}
-            withMargin
-          />
-
-          <Button
-            onPress={() => navigate('Profile')}
-            label={t('pass')}
-            type={ButtonType.Link}
-            disabled={isLoading}
-          />
-        </View>
+        <View style={styles.body} />
       </ScrollView>
     </SafeAreaView>
   )

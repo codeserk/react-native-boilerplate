@@ -1,12 +1,11 @@
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import React, { useContext } from 'react'
-import { useTranslation } from 'react-i18next'
 import { Platform } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import { Fonts } from './constants'
-import { EnableNotificationsScreen } from './screens/auth/EnableNotificationsScreen'
+import { EnableNotificationsScreen } from './screens/EnableNotificationsScreen'
 import { SplashScreen } from './screens/SplashScreen'
 import { AuthStoreContext } from './store/auth.store'
 
@@ -67,13 +66,11 @@ export function Navigator() {
   return (
     <NavigationContainer theme={appTheme}>
       <Stack.Navigator>
-        {!isInitialized && <LoadingScreens />}
+        {!isInitialized && LoadingScreens()}
 
-        {isInitialized && !isAuthenticated && <UnauthenticatedScreens />}
+        {isInitialized && !isAuthenticated && UnauthenticatedScreens()}
 
-        {isInitialized && isAuthenticated && (
-          <AuthenticatedScreens hasSeenEnableNotificationsScreen={hasSeenNotificationsScreen} />
-        )}
+        {isInitialized && isAuthenticated && AuthenticatedScreens({ hasSeenNotificationsScreen })}
       </Stack.Navigator>
     </NavigationContainer>
   )
