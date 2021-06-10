@@ -5,11 +5,11 @@ import { StatusBar } from 'react-native'
 import FlashMessage from 'react-native-flash-message'
 
 import { resources } from '~/helpers/locale'
+import { Navigator } from '~/router'
 import { setDefaultFont } from '~/utils/font'
 import { setupMoment } from '~/utils/moment'
 import { Compose } from '~/utils/store'
 
-import { Navigator } from './app/Navigator'
 import { AuthStoreContext, useAuthStore } from './app/store/auth.store'
 import { PreferencesStoreContext, usePreferencesStore } from './app/store/preferences.store'
 

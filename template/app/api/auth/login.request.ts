@@ -1,4 +1,5 @@
 import { User } from '../../interfaces/user.interface'
+import { wait } from '../../utils/time'
 import { http } from '../http'
 import { transformUser } from '../transformers/user.transformer'
 
@@ -13,9 +14,14 @@ export interface LoginResponse {
  * @param password
  * @throws error when the user is not authenticated
  * @returns logged in user
+ *
+ * @todo Implement this endpoint
  */
 export async function login(email: string, password: string): Promise<LoginResponse> {
-  const response = await http.post('/authentications/signin', { email, password })
+  await wait(1)
+  const response = { data: {} } as any
+  // const response = await http.post('/authentications/signin', { email, password })
+
   if (!response.data?.user || !response.data?.token) {
     throw new Error('Unauthenticated')
   }

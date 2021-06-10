@@ -16,7 +16,7 @@ export function useAuthStore(preferences: PreferencesStore) {
   const [isLoading, setLoading] = useState(false)
   const [user, setUser] = useState<User | null>(null)
   const [jwt, setJWT] = useState<string | null>(null)
-  const [hasSeenNotificationsScreen, setHasSeenNotificationsScreen] = useState(false)
+  const [hasSeenNotificationsView, setHasSeenNotificationsView] = useState(false)
 
   // Getters
   const isAuthenticated = !!user && !!jwt
@@ -30,7 +30,7 @@ export function useAuthStore(preferences: PreferencesStore) {
     setLoading(true)
 
     // Load whether the user has seen notifications screen
-    setHasSeenNotificationsScreen(await preferences.getHasSeenEnableNotificationsScreen())
+    setHasSeenNotificationsView(await preferences.getHasSeenEnableNotificationsView())
 
     const currentJWT = await preferences.getJWT()
     if (!currentJWT) {
@@ -41,9 +41,9 @@ export function useAuthStore(preferences: PreferencesStore) {
     try {
       setJWT(currentJWT)
       configureJWT(currentJWT)
-      const user = await authAPI.getCurrentUser()
+      const currentUser = await authAPI.getCurrentUser()
 
-      setUser(user)
+      setUser(currentUser)
     } catch (error) {
       console.error(error)
     }
@@ -98,7 +98,7 @@ export function useAuthStore(preferences: PreferencesStore) {
     isInitialized,
     isLoading,
 
-    hasSeenNotificationsScreen,
+    hasSeenNotificationsView,
     isAuthenticated,
 
     setUser,

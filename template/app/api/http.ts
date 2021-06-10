@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios'
 
-import { config } from '../config'
+import { config } from '../helpers/config'
 
 /** Http instance. */
 export let http = axios.create({

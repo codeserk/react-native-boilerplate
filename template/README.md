@@ -10,7 +10,7 @@ npm ci
 
 ## Configuration
 
-Project's configuration is set in [this file](./src/config.ts).
+Project's configuration is set in [this file](./app/helpers/config.ts).
 
 ### Env variables
 

@@ -4,7 +4,7 @@ import React from 'react'
 const ReactNative = require('react-native')
 import { StyleSheet } from 'react-native'
 
-import { Fonts } from '../constants'
+import { Fonts } from '~/assets/theme/fonts'
 
 export const setDefaultFont = () => {
   const oldTextRender = ReactNative.Text.render

@@ -4,7 +4,7 @@ import { createContext } from 'react'
 enum Keys {
   JWT = 'jwt',
 
-  // Whether the user has seen the screen to enable notifications
+  // Whether the user has seen the view to enable notifications
   SeenEnableNotifications = 'seen-enable-notifications',
 }
 
@@ -33,9 +33,9 @@ export function usePreferencesStore() {
   }
 
   /**
-   * Gets whether the user has seen the screen to enable push notifications
+   * Gets whether the user has seen the view to enable push notifications
    */
-  async function getHasSeenEnableNotificationsScreen(): Promise<boolean> {
+  async function getHasSeenEnableNotificationsView(): Promise<boolean> {
     const value = await Storage.getItem(Keys.SeenEnableNotifications)
     if (value) {
       return value === 'true'
@@ -45,9 +45,9 @@ export function usePreferencesStore() {
   }
 
   /**
-   * Saves the fact that the user has seen the screen to enable push notifications
+   * Saves the fact that the user has seen the view to enable push notifications
    */
-  async function setHasSeenEnableNotificationsScreen() {
+  async function setHasSeenEnableNotificationsView() {
     await Storage.setItem(Keys.SeenEnableNotifications, 'true')
   }
 
@@ -58,8 +58,8 @@ export function usePreferencesStore() {
     removeJWT,
 
     // Seen
-    getHasSeenEnableNotificationsScreen,
-    setHasSeenEnableNotificationsScreen,
+    getHasSeenEnableNotificationsView,
+    setHasSeenEnableNotificationsView,
   }
 }
 
