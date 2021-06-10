@@ -9,7 +9,7 @@ import NotificationsImage from '~/assets/images/notifications.svg'
 
 import { Fonts } from '../constants'
 import { PreferencesStoreContext } from '../store/preferences.store'
-import { deviceWidth } from '../util/dimensions'
+import { deviceWidth } from '../utils/dimensions'
 
 /**
  * Enable notifications screen
