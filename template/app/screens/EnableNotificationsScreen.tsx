@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/core'
 import React, { useContext, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { StyleSheet, Text, View } from 'react-native'
@@ -6,9 +5,9 @@ import { ScrollView } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { SvgXml } from 'react-native-svg'
 
-import NotificationsImage from '../../assets/img/notifications.svg'
+import NotificationsImage from '~/assets/images/notifications.svg'
+
 import { Fonts } from '../constants'
-import { AuthStoreContext } from '../store/auth.store'
 import { PreferencesStoreContext } from '../store/preferences.store'
 import { deviceWidth } from '../util/dimensions'
 
@@ -18,9 +17,7 @@ import { deviceWidth } from '../util/dimensions'
  */
 export function EnableNotificationsScreen() {
   const { t } = useTranslation()
-  const { navigate } = useNavigation()
   const { setHasSeenEnableNotificationsScreen } = useContext(PreferencesStoreContext)
-  const { isLoading } = useContext(AuthStoreContext)!
 
   useEffect(() => {
     setHasSeenEnableNotificationsScreen()

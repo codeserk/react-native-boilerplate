@@ -4,13 +4,13 @@ import { initReactI18next } from 'react-i18next'
 import { StatusBar } from 'react-native'
 import FlashMessage from 'react-native-flash-message'
 
-import { resources } from './src/locale/config'
-import { Navigator } from './src/Navigator'
-import { AuthStoreContext, useAuthStore } from './src/store/auth.store'
-import { PreferencesStoreContext, usePreferencesStore } from './src/store/preferences.store'
-import { setDefaultFont } from './src/util/font'
-import { setupMoment } from './src/util/moment'
-import { Compose } from './src/util/store'
+import { resources } from './app/helpers/locale/config'
+import { Navigator } from './app/Navigator'
+import { AuthStoreContext, useAuthStore } from './app/store/auth.store'
+import { PreferencesStoreContext, usePreferencesStore } from './app/store/preferences.store'
+import { setDefaultFont } from './app/util/font'
+import { setupMoment } from './app/util/moment'
+import { Compose } from './app/util/store'
 
 i18n.use(initReactI18next).init({
   lng: 'fr',
